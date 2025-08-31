@@ -8,10 +8,13 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install --production
+RUN npm install
 
 # Copy the remaining application code
 COPY . .
+
+# Build the app (e.g. TypeScript -> dist)
+RUN npm run build
 
 # Expose the port your app uses
 EXPOSE 3000
